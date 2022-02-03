@@ -5,6 +5,7 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
 from ball import Ball
+import time
 
 GAME_TITLE = "Pong"
 SCREEN_WIDTH = 800
@@ -32,7 +33,9 @@ screen.onkey(left_paddle.paddle_down, "s")
 # ball.ball_y_cor = 0
 game_is_on = True
 while game_is_on:
+    time.sleep(0.01)
     screen.update()
+    ball.movement()
     # if screen.update():
         # ball.settiltangle(45)
         # ball_x_cor = ball.xcor() + 10
