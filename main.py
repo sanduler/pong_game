@@ -10,6 +10,7 @@ import time
 GAME_TITLE = "Pong"
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
+BOUNCE_EDGE = 13
 BACKGROUND_COLOR = "Black"
 
 screen = Screen()
@@ -29,17 +30,13 @@ screen.onkey(right_paddle.paddle_down, "Down")
 screen.onkey(left_paddle.paddle_up, "w")
 screen.onkey(left_paddle.paddle_down, "s")
 
-# ball.ball_x_cor = 0
-# ball.ball_y_cor = 0
+
 game_is_on = True
 while game_is_on:
     time.sleep(0.01)
     screen.update()
     ball.movement()
-    # if screen.update():
-        # ball.settiltangle(45)
-        # ball_x_cor = ball.xcor() + 10
-        # ball_y_cor = ball.ycor() + 10
-
+    if ball.ycor() > ((SCREEN_HEIGHT/2) - BOUNCE_EDGE) or ball.ycor() < ((-1 * (SCREEN_HEIGHT / 2)) + BOUNCE_EDGE):
+        ball.bounce()
 
 screen.exitonclick()
