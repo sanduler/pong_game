@@ -15,32 +15,35 @@ screen = Screen()
 screen.setup(SCREEN_WIDTH, SCREEN_HEIGHT)
 screen.bgcolor(BACKGROUND_COLOR)
 screen.title(GAME_TITLE)
+screen.tracer(0)
 
-right_paddle = Turtle(shape="square")
-right_paddle.color("White")
-right_paddle.resizemode("auto")
-right_paddle.turtlesize(stretch_wid=5, stretch_len=1)
+paddle = Turtle(shape="square")
+paddle.color("White")
+paddle.resizemode("auto")
+paddle.turtlesize(stretch_wid=5, stretch_len=1)
 
-right_paddle.penup()
-right_paddle.goto((350, 0))
+paddle.penup()
+paddle.goto((350, 0))
 
 
 def paddle_up():
-    new_y = right_paddle.ycor() + 20
-    right_paddle.goto(right_paddle.xcor(), new_y)
+    new_y = paddle.ycor() + 20
+    paddle.goto(paddle.xcor(), new_y)
+
 
 def paddle_down():
-    new_y = right_paddle.ycor() - 20
-    right_paddle.goto(right_paddle.xcor(), new_y)
+    new_y = paddle.ycor() - 20
+    paddle.goto(paddle.xcor(), new_y)
+
 
 screen.listen()
 screen.onkey(paddle_up, "Up")
 screen.onkey(paddle_down, "Down")
 
 
-
-
-
+game_is_on = True
+while game_is_on:
+    screen.update()
 
 
 
